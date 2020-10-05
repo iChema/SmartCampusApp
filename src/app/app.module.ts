@@ -13,6 +13,25 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { Firebase } from '@ionic-native/firebase/ngx';
+
+import { FcmService } from './services/fcm.service';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { ToastService } from './services/toast.service';
+
+const config = {
+  apiKey: "AIzaSyC_gGvTuqXQDxDWSkU3HBCgOZ-RtxSAhCM",
+  authDomain: "smartcampusdb-afee9.firebaseapp.com",
+  databaseURL: "https://smartcampusdb-afee9.firebaseio.com",
+  projectId: "smartcampusdb-afee9",
+  storageBucket: "smartcampusdb-afee9.appspot.com",
+  messagingSenderId: "689776417256",
+  appId: "1:689776417256:web:cf1a521199f898ec60ac5d",
+  measurementId: "G-VT3RKN31SE"
+};
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,10 +42,24 @@ import { FormsModule } from '@angular/forms';
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule
   ],
-  declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  providers: [
+    InAppBrowser,
+    SplashScreen,
+    StatusBar,
+    Firebase, 
+    FCM,
+    FcmService,
+    ToastService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}
