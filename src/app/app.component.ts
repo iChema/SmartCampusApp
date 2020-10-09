@@ -45,6 +45,11 @@ export class AppComponent implements OnInit {
       title: 'Chat',
       url: '/app/tabs/chat',
       icon: 'chatbox'
+    },
+    {
+      title: 'Notifications',
+      url: '/app/tabs/notifications',
+      icon: 'notifications'
     }
   ];
   loggedIn = false;

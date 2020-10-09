@@ -56,12 +56,22 @@ const routes: Routes = [
             loadChildren: () => import('../about/about.module').then(m => m.AboutModule)
           }
         ]
-      },{
+      },
+      {
         path: 'chat',
         children: [
           {
             path: '',
             loadChildren: () => import('../chat/chat.module').then(m => m.ChatModule)
+          }
+        ]
+      },
+      {
+        path: 'notifications',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../notification-list/notification-list.module').then(m => m.NotificationListModule)
           }
         ]
       },

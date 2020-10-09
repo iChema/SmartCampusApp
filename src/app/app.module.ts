@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 
 @NgModule({
   imports: [
@@ -26,7 +28,12 @@ import { FormsModule } from '@angular/forms';
     })
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar],
+  providers: [
+    InAppBrowser,
+    SplashScreen,
+    StatusBar,
+    LocalNotifications
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
