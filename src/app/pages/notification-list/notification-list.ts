@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
 import { LocalNotifications, ELocalNotificationTriggerUnit } from '@ionic-native/local-notifications/ngx';
+import { AlertController } from '@ionic/angular';
+import { Device } from '@ionic-native/device/ngx';
 
 @Component({
   selector: 'page-notification-list',
@@ -9,9 +11,14 @@ import { LocalNotifications, ELocalNotificationTriggerUnit } from '@ionic-native
 })
 
 export class NotificationListPage {
+  mac_BT: string="a";
+  mac_WIFI: string="b";
+  uuii:string = "willian joto";
 
-  constructor(private localNotifications: LocalNotifications) {
-
+  constructor(private localNotifications: LocalNotifications, private device: Device, public alertController: AlertController) {
+    this.mac_BT=this.device.bt_address;
+    this.mac_WIFI=this.device.wifi_address;
+    this.uuii = this.device.uuid;
   }
 
   registerNotification(seconds: number) {
@@ -35,4 +42,15 @@ export class NotificationListPage {
     });
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: this.device.bt_address,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }

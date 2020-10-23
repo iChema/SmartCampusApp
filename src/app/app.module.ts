@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     InAppBrowser,
     SplashScreen,
     StatusBar,
-    LocalNotifications
+    LocalNotifications,
+    Device
   ],
   bootstrap: [AppComponent]
 })
