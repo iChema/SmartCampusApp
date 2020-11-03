@@ -4,6 +4,10 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Notifications</ion-title>
+    <ion-button (click)="Scan()" slot="end">
+      <ion-icon name="Bluetooth"></ion-icon>
+      <p>Scan</p>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +18,41 @@
   <br> Mac BT: {{mac_BT}}
   <br> Mac WIFI: {{mac_WIFI}}
   <br> UUII : {{uuii}}
-</ion-content>
+  <ion-list>
+    <ion-card-content ion-item *ngFor="let device of devices">
+      <p>{{device.name || 'Unnamed'}}</p>
+      <p>{{device.id}}</p>
+      <p> RSSI: {{device.rssi}}</p>
+    </ion-card-content>
+  </ion-list>
+
+  <ion-list padding>
+    <ion-button expand="block"
+                (click)="startScanning()">scan</ion-button>
+    <ion-list-header>
+        Paired Devices
+    </ion-list-header>
+    <ion-item *ngFor="let device of pairedDevices">
+        {{device.name}}
+    </ion-item>
+    <ion-button expand="block"
+                (click)="disconnect()">Disconnect</ion-button>
+    <ion-list-header>
+        availlable Devices
+    </ion-list-header>
+    <ion-item *ngFor='let device of unpairedDevices'>
+        <span (click)="selectDevice(device.id)">
+            {{device.name || device.address}}
+        </span>
+    </ion-item>
+    <ion-spinner name="crescent"
+                 *ngIf="gettingDevices"></ion-spinner>
+</ion-list>
+
 
 <ion-button expand="full" color="danger" (click)="presentAlert()"> 
   MAC!
 </ion-button>
+  
+</ion-content>
+

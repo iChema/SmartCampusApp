@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { BLE } from '@ionic-native/ble/ngx';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { Device } from '@ionic-native/device/ngx';
     SplashScreen,
     StatusBar,
     LocalNotifications,
-    Device
+    Device,
+    BLE,
+    BluetoothSerial
   ],
   bootstrap: [AppComponent]
 })
