@@ -67,11 +67,13 @@ export class AppComponent implements OnInit {
     private toastCtrl: ToastController,
     public socket: Socket
   ) {
+    console.log('constructor de app')
     this.initializeApp();
     this.socket.connect();
   }
 
   async ngOnInit() {
+    console.log('on init de app')
     this.checkLoginStatus();
     this.listenForLoginEvents();
 
@@ -99,7 +101,7 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      //this.splashScreen.hide();
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { MenuController, IonSlides } from '@ionic/angular';
 import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
@@ -18,9 +18,12 @@ export class LoginPage {
   submitted = false;
 
   constructor(
+    public menu: MenuController,
     public userData: UserData,
     public router: Router
-  ) { }
+  ) { 
+    this.menu.enable(false);
+  }
 
   onLogin(form: NgForm) {
     this.submitted = true;
