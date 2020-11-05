@@ -77,6 +77,10 @@ See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/ma
 
 1. Run `ionic cordova run android --prod`
 
+2. Run `sudo chmod -R 774 platforms/`
+
 ### iOS
 
 1. Run `ionic cordova run ios --prod`
+
+2. Run `sudo chmod -R 774 platforms/`

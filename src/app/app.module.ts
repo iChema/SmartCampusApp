@@ -24,7 +24,9 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      backButtonText: 'Atrás'
+    }),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production

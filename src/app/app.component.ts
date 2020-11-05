@@ -22,7 +22,7 @@ import { Socket } from './providers/socket';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Schedule',
+      title: 'Horario',
       url: '/app/tabs/schedule',
       icon: 'calendar'
     },
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     }
   ];
   loggedIn = false;
-  dark = false;
+  dark = true;
 
   constructor(
     private menu: MenuController,
