@@ -25,12 +25,17 @@ export class LoginPage {
     this.menu.enable(false);
   }
 
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menu.enable(true);
+  }
+
   onLogin(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
       this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
     }
   }
 

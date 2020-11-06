@@ -19,9 +19,7 @@ export class TutorialPage {
     public menu: MenuController,
     public router: Router,
     public storage: Storage
-  ) {
-    console.log('tutorial');
-  }
+  ) {}
 
   startApp() {
     this.router
@@ -43,10 +41,5 @@ export class TutorialPage {
     });
 
     this.menu.enable(false);
-  }
-
-  ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menu.enable(true);
   }
 }

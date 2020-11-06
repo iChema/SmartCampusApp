@@ -67,13 +67,11 @@ export class AppComponent implements OnInit {
     private toastCtrl: ToastController,
     public socket: Socket
   ) {
-    console.log('constructor de app')
     this.initializeApp();
     this.socket.connect();
   }
 
   async ngOnInit() {
-    console.log('on init de app')
     this.checkLoginStatus();
     this.listenForLoginEvents();
 
@@ -116,7 +114,6 @@ export class AppComponent implements OnInit {
       this.loggedIn = loggedIn;
     }, 300);
     this.storage.get('ion_did_tutorial').then((val) => {
-      console.log(val);
       if (val) {
         if (loggedIn == false) {
           this.router.navigateByUrl('/login');
@@ -143,7 +140,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      return this.router.navigateByUrl('/login');
     });
   }
 
