@@ -115,9 +115,16 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.loggedIn = loggedIn;
     }, 300);
-    if(loggedIn==false){
-      this.router.navigateByUrl('/login');
-    }
+    this.storage.get('ion_did_tutorial').then((val) => {
+      console.log(val);
+      if (val) {
+        if (loggedIn == false) {
+          this.router.navigateByUrl('/login');
+        }
+      }else{
+        this.openTutorial();
+      }
+    });
   }
 
   listenForLoginEvents() {
