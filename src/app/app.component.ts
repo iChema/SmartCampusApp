@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      //this.splashScreen.hide();
+      this.splashScreen.hide();
     });
   }
 
@@ -115,6 +115,9 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.loggedIn = loggedIn;
     }, 300);
+    if(loggedIn==false){
+      this.router.navigateByUrl('/login');
+    }
   }
 
   listenForLoginEvents() {
