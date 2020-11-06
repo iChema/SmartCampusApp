@@ -68,7 +68,6 @@ export class AppComponent implements OnInit {
     public socket: Socket
   ) {
     this.initializeApp();
-    this.socket.connect();
   }
 
   async ngOnInit() {

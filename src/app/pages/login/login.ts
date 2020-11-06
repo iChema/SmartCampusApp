@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { UserData } from '../../providers/user-data';
-
+import { Socket } from '../../providers/socket';
 import { UserOptions } from '../../interfaces/user-options';
 
 
@@ -20,7 +20,8 @@ export class LoginPage {
   constructor(
     public menu: MenuController,
     public userData: UserData,
-    public router: Router
+    public router: Router,
+    public socket: Socket
   ) { 
     this.menu.enable(false);
   }
@@ -28,6 +29,7 @@ export class LoginPage {
   ionViewDidLeave() {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
+    this.socket.start();
   }
 
   onLogin(form: NgForm) {

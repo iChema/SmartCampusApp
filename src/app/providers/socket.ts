@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from '../../environments/environment';
+import { ToastController } from '@ionic/angular';
+import { UserData } from './user-data';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +10,34 @@ import { environment } from '../../environments/environment';
 export class Socket {
     socket : any;
     
-    constructor() {}
+    constructor(
+        private toastCtrl: ToastController,
+        private userData: UserData
+    ) {}
 
-    connect() {
+    start() {
         this.socket = io(environment.urlServerSocket);
+        console.log('empieza conexión');
         this.socket.on('connect', ()=> {
-            this.socket.emit('join', {curp:'12345678',sala:1} , (error) => {
-                if (error) {} else {}
+            this.userData.getUsername().then(username => {
+                this.socket.emit('join', {curp:username,sala:1} , async (error) => {
+                    if (error) {} else {}
+                });
             });
+        });
+
+        this.socket.on('connect_error', async () => {
+            const toast = await this.toastCtrl.create({
+                message: 'Error en conexión con Socket',
+                position: 'bottom',
+                duration: 2000
+              });
+        
+              await toast.present();
+        });
+
+        this.socket.on('setAgentOnline', (list)=>{
+            console.log(list);
         });
     }
 }
