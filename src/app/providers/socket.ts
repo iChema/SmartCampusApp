@@ -20,7 +20,7 @@ export class Socket {
         console.log('empieza conexión');
         this.socket.on('connect', ()=> {
             this.userData.getUsername().then(username => {
-                this.socket.emit('join', {curp:username,sala:1} , async (error) => {
+                this.socket.emit('join', {curp:username,sala:1} , (error) => {
                     if (error) {} else {}
                 });
             });
@@ -37,7 +37,9 @@ export class Socket {
         });
 
         this.socket.on('setAgentOnline', (list)=>{
-            console.log(list);
+            this.userData.setAgentsOnlineList(list).then(()=>{
+                console.log('guardado');
+            })
         });
     }
 }

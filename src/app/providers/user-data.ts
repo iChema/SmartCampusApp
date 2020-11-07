@@ -72,4 +72,14 @@ export class UserData {
       return value;
     });
   }
+
+  setAgentsOnlineList(list: string[]): Promise<any> {
+    return this.storage.set('agentsOnline', list);
+  }
+
+  getAgentOnlineList(): Promise<string> {
+    return this.storage.get('agentsOnline').then((value) => {
+      return value;
+    });
+  }
 }
