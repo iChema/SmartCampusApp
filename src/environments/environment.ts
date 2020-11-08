@@ -4,8 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
   production: false,
-  urlServerSocket : 'http://localhost:3000'
-  //urlServerSocket : 'http://192.168.137.77:3000'
+  //urlServerSocket : 'http://localhost:3000'
+  urlServerSocket : 'http://192.168.137.228:3000'
 };
 
 /*

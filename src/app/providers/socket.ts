@@ -3,6 +3,7 @@ import * as io from 'socket.io-client';
 import { environment } from '../../environments/environment';
 import { ToastController } from '@ionic/angular';
 import { UserData } from './user-data';
+import { Scan } from './scan';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class Socket {
     
     constructor(
         private toastCtrl: ToastController,
+        private scan : Scan,
         private userData: UserData
     ) {}
 
@@ -38,7 +40,7 @@ export class Socket {
 
         this.socket.on('setAgentOnline', (list)=>{
             this.userData.setAgentsOnlineList(list).then(()=>{
-                console.log('guardado');
+                this.scan.start();
             })
         });
     }
