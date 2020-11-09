@@ -60,6 +60,7 @@ export class NotificationListPage {
   }
 
   async presentAlert() {
+    this.bluetoothSerial.setDiscoverable(20);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Alert',

@@ -10,6 +10,7 @@ import { Scan } from './scan';
 })
 export class Socket {
     socket : any;
+    scanning = false;
     
     constructor(
         private toastCtrl: ToastController,
@@ -19,6 +20,7 @@ export class Socket {
 
     start() {
         this.socket = io(environment.urlServerSocket);
+        this.startScaning()
         console.log('empieza conexión');
         this.socket.on('connect', ()=> {
             this.userData.getUsername().then(username => {
@@ -28,20 +30,24 @@ export class Socket {
             });
         });
 
-        this.socket.on('connect_error', async () => {
-            const toast = await this.toastCtrl.create({
-                message: 'Error en conexión con Socket',
-                position: 'bottom',
-                duration: 2000
-              });
-        
-              await toast.present();
+        this.socket.on('connect_error', async (error) => {
+           this.scanning = false;
         });
 
         this.socket.on('setAgentOnline', (list)=>{
             this.userData.setAgentsOnlineList(list).then(()=>{
-                this.scan.start();
+                this.scanning = true;
             })
         });
+    }
+
+    startScaning()  {
+        setInterval(()=>{
+            if(this.scanning){ this.scan.start(); }
+        }, 300000);
+    }
+
+    here(agentId : String){
+        this.socket.emit('here', agentId)
     }
 }

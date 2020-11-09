@@ -77,7 +77,7 @@ export class UserData {
     return this.storage.set('agentsOnline', list);
   }
 
-  getAgentOnlineList(): Promise<string> {
+  getAgentOnlineList(): Promise<string[]> {
     return this.storage.get('agentsOnline').then((value) => {
       return value;
     });
