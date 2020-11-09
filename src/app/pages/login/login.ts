@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { UserData } from '../../providers/user-data';
 import { Socket } from '../../providers/socket';
+import { Scan } from '../../providers/scan';
 import { UserOptions } from '../../interfaces/user-options';
 
 
@@ -21,7 +22,8 @@ export class LoginPage {
     public menu: MenuController,
     public userData: UserData,
     public router: Router,
-    public socket: Socket
+    public socket: Socket,
+    public scan: Scan
   ) { 
     this.menu.enable(false);
   }
@@ -29,7 +31,12 @@ export class LoginPage {
   ionViewDidLeave() {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
+    this.startScaning();
+  }
+
+  startScaning()  {
     this.socket.start();
+    this.scan.socket = this.socket;
   }
 
   onLogin(form: NgForm) {

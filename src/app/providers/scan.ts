@@ -1,18 +1,17 @@
 import { Injectable , NgZone } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { UserData } from './user-data';
-import { Socket } from './socket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Scan {
     devices:any[] = [];
+    socket= null
     
     constructor(
         private ble : BLE,
         private ngZone: NgZone,
-        private socket : Socket,
         private userData: UserData
     ) {}
 
@@ -26,6 +25,7 @@ export class Scan {
     onDeviceDiscovered(device){
         this.ngZone.run(()=>{
             this.devices.push(device);
+            this.checkAgentList(device)
         });
     }
 
