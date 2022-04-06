@@ -23,6 +23,40 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'agents',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../agent-list/agent-list.module').then(m => m.AgentListModule)
+          },/*
+          {
+            path: 'session/:sessionId',
+            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
+          },*/
+          {
+            path: 'agent_details/:agentId',
+            loadChildren: () => import('../agent-detail/agent-detail.module').then(m => m.AgentDetailModule)
+          }
+        ]
+      },
+      {
+        path: 'user_location',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../user-location-list/user-location-list.module').then(m => m.UserLocationListModule)
+          },/*
+          {
+            path: 'session/:sessionId',
+            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
+          },*/
+          {
+            path: 'user_location_details/:userLocationId',
+            loadChildren: () => import('../user-location-detail/user-location-detail.module').then(m => m.UserLocationDetailModule)
+          }
+        ]
+      },
+      {
         path: 'speakers',
         children: [
           {

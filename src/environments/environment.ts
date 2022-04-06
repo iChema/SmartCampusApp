@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   //urlServerSocket : 'http://localhost:3000'
-  urlServerSocket : 'http://192.168.137.228:3000'
+  //urlServerSocket : 'http://10.57.100.95:5000'
+  urlServerSocket : 'http://192.168.248.92:5000'
 };
 
 /*

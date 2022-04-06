@@ -22,9 +22,51 @@ import { Socket } from './providers/socket';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Horario',
+      title: 'schedule',
       url: '/app/tabs/schedule',
       icon: 'calendar'
+    },
+    {
+      title: 'Agents',
+      url: '/app/tabs/agents',
+      icon: 'hardware-chip'
+    },
+    {
+      title: 'User location',
+      url: '/app/tabs/user_location',
+      icon: 'location'
+    },
+    {
+      title: 'Chat',
+      url: '/app/tabs/chat',
+      icon: 'chatbox'
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
+    }
+  ];  
+  appPages2 = [
+    {
+      title: 'schedule',
+      url: '/app/tabs/schedule',
+      icon: 'calendar'
+    },
+    {
+      title: 'Agents',
+      url: '/app/tabs/agents',
+      icon: 'hardware-chip'
+    },
+    {
+      title: 'Chat',
+      url: '/app/tabs/chat',
+      icon: 'chatbox'
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
     },
     {
       title: 'Speakers',
@@ -37,23 +79,13 @@ export class AppComponent implements OnInit {
       icon: 'map'
     },
     {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    },
-    {
-      title: 'Chat',
-      url: '/app/tabs/chat',
-      icon: 'chatbox'
-    },
-    {
       title: 'Notifications',
       url: '/app/tabs/notifications',
       icon: 'notifications'
     }
   ];
   loggedIn = false;
-  dark = true;
+  dark = false;
 
   constructor(
     private menu: MenuController,

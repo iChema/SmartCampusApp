@@ -12,7 +12,7 @@
               "speakerNames": ["LIC. PUGA SOBERANES HECTOR JOSE"],
               "timeStart": "08:45 am",
               "timeEnd": "10:25 am",
-              "tracks": ["639"],
+              "tracks": ["food"],
               "id": "1"
             }
           ]
@@ -26,7 +26,7 @@
               "speakerNames": ["M.C. LINO RAMIREZ CARLOS"],
               "timeStart": "10:30 am",
               "timeEnd": "12:10 am",
-              "tracks": ["639"],
+              "tracks": ["Ionic"],
               "id": "2"
             }
           ]
@@ -40,8 +40,31 @@
               "speakerNames": ["DRA BALTAZAR FLORES MARIA DEL ROSARIO"],
               "timeStart": "16:40 pm",
               "timeEnd": "18:25 pm",
-              "tracks": ["639"],
+              "tracks": ["Tooling"],
               "id": "3"
+            }
+          ]
+        },
+        {
+          "time": "10:30 am",
+          "sessions": [
+            {
+              "name": "SEMINARIO DE INVESTIGACIÓN I",
+              "location": "C-E-12",
+              "speakerNames": ["MC. DIAZ GONZALEZ CLAUDIA LETICIA"],
+              "timeStart": "10:30 am",
+              "timeEnd": "12:10 am",
+              "tracks": ["Services"],
+              "id": "4"
+            },
+            {
+              "name": "SEMINARIO DE INVESTIGACIÓN I",
+              "location": "C-E-12",
+              "speakerNames": ["MC. DIAZ GONZALEZ CLAUDIA LETICIA"],
+              "timeStart": "10:30 am",
+              "timeEnd": "12:10 am",
+              "tracks": ["design"],
+              "id": "5"
             }
           ]
         }
@@ -56,18 +79,21 @@
             {
               "name": "SEMINARIO DE INVESTIGACIÓN I",
               "location": "C-E-12",
-              "speakerNames": ["MC. DIAZ GONZALEZ CLAUDIA LETICIA"],
+              "speakerNames": [
+                "MC. DIAZ GONZALEZ CLAUDIA LETICIA"
+              ],
               "timeStart": "10:30 am",
               "timeEnd": "12:10 am",
-              "tracks": ["639"],
-              "id": "4"
+              "tracks": [
+                "Services"
+              ],
+              "id": "6"
             }
           ]
         }
       ]
     }
   ],
-
   "speakers": [
     {
       "name": "Burt Bear",
@@ -226,7 +252,6 @@
       "id": "13"
     }
   ],
-
   "map": [
     {
       "name": "Monona Terrace Convention Center",
@@ -245,7 +270,6 @@
       "lng": -89.38335
     }
   ],
-
   "tracks": [
     {
       "name": "Angular",

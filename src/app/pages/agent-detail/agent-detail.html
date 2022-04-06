@@ -1,0 +1,79 @@
+<ion-content class="agent-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/agents"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons *ngIf="agent" slot="end">
+        <ion-button (click)="cargarDatos()">
+          <ion-icon slot="icon-only" ios="reload-outline" md="reload-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="agent-background">
+    <img src="../../../assets/img/boticon.png" [alt]="agent.location">
+    <h2>{{agent.build}}: {{agent.location}}</h2>
+  </div>
+  <div class="ion-padding agent-detail" *ngFor="let date of agent.dates">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label color="primary">
+          <h1 class="ion-text-center">
+            <!--
+              <ion-icon ios="calendar-outline" md="calendar-sharp"></ion-icon>
+              <ion-icon ios="speedometer-outline" md="speedometer-sharp"></ion-icon>
+              Date:
+            -->
+            {{date.date}}
+          </h1>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="flame-outline" md="flame-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>CO: {{date.co}} PPM</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="flask-outline" md="flask-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>CO<sub>2</sub>: {{date.co2}} PPM</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="volume-high-outline" md="volume-high-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Noise: {{date.noise}} dB</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="water-outline" md="water-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Humidity: {{date.humidity}} %</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="thermometer-outline" md="thermometer-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Temperature: {{date.temperature_c}} °C &nbsp;&nbsp;&nbsp;&nbsp; {{date.temperature_f}} °F</ion-label>
+      </ion-item>
+      <!--
+      <ion-item>
+        <ion-icon ios="thermometer-outline" md="thermometer-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Temperature: {{date.temperature_f}} °F</ion-label>
+      </ion-item>
+      -->
+      <ion-item>
+        <ion-icon ios="thermometer-outline" md="thermometer-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Heat index: {{date.heat_index_c}} °C &nbsp;&nbsp;&nbsp;&nbsp; {{date.heat_index_f}} °F</ion-label>
+      </ion-item>
+      <!--
+      <ion-item>
+        <ion-icon ios="thermometer-outline" md="thermometer-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Heat index: {{date.heat_index_f}} °F</ion-label>
+      </ion-item>
+      -->
+    </ion-list>
+</div>
+</ion-content>

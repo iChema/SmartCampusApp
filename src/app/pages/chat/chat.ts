@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { Socket } from '../../providers/socket';
+import { UserData } from '../../providers/user-data'
 
 @Component({
   selector: 'app-chat',
@@ -15,9 +16,15 @@ export class ChatPage {
   // tslint:disable-next-line:variable-name
   chat_input: string;
 
-  constructor(public navCtrl: NavController, public socket: Socket) {
-
+  constructor(public navCtrl: NavController, public socket: Socket, public userData: UserData) {
     this.Receive();
+    this.getName();
+  }
+
+  getName(){
+    this.userData.getUsername().then((username) => {
+      this.myUserId = username;
+    });
   }
 
   send(msg) {
@@ -33,7 +40,7 @@ export class ChatPage {
 
   ReceiveHi() {
     // Socket receiving method
-    this.socket.socket.emit('new user', this.myUserId , (data) => {
+    this.socket.socket.emit('new user', this.myUserId, (data) => {
       if (data) {
         console.log(data);
       } else {

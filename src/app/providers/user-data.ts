@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { from, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -79,6 +81,26 @@ export class UserData {
 
   getAgentOnlineList(): Promise<string[]> {
     return this.storage.get('agentsOnline').then((value) => {
+      return value;
+    });
+  }
+
+  setAgentsList(list: string[]): Promise<any> {
+    return this.storage.set('agents', list);
+  }
+
+  getAgentsList(): Promise<string[]> {
+    return this.storage.get('agents').then((value) => {
+      return value;
+    });
+  }
+
+  setUsersLocationList(list: string[]): Promise<any> {
+    return this.storage.set('usersLocation', list);
+  }
+
+  getUsersLocationList(): Promise<string[]> {
+    return this.storage.get('usersLocation').then((value) => {
       return value;
     });
   }

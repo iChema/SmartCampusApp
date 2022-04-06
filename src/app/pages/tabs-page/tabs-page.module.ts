@@ -12,6 +12,8 @@ import { SessionDetailModule } from '../session-detail/session-detail.module';
 import { SpeakerDetailModule } from '../speaker-detail/speaker-detail.module';
 import { SpeakerListModule } from '../speaker-list/speaker-list.module';
 import { ChatModule } from '../chat/chat.module';
+import { AgentListModule } from '../agent-list/agent-list.module';
+import { UserLocationListModule } from '../user-location-list/user-location-list.module';
 
 @NgModule({
   imports: [
@@ -23,6 +25,8 @@ import { ChatModule } from '../chat/chat.module';
     SessionDetailModule,
     SpeakerDetailModule,
     SpeakerListModule,
+    AgentListModule,
+    UserLocationListModule,
     TabsPageRoutingModule,
     ChatModule
   ],

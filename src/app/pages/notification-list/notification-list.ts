@@ -17,24 +17,24 @@ export class NotificationListPage {
   pairedDevices: any;
   gettingDevices: boolean;
 
-  devices:any[] = [];
+  devices: any[] = [];
 
-  mac_BT: string="a";
-  mac_WIFI: string="b";
-  uuii:string = "willian joto";
+  mac_BT: string = "a";
+  mac_WIFI: string = "b";
+  uuii: string = "willian joto";
 
   constructor(
     private localNotifications: LocalNotifications,
     private device: Device,
     public alertController: AlertController,
-    private ble:BLE,
+    private ble: BLE,
     private ngZone: NgZone,
     private bluetoothSerial: BluetoothSerial
-    
-    ) {
+
+  ) {
     //this.mac_BT=this.device.bt_address;
     //this.mac_WIFI=this.device.wifi_address;
-    this.uuii = this.device.uuid;    
+    this.uuii = this.device.uuid;
     bluetoothSerial.enable();
   }
 
@@ -72,15 +72,15 @@ export class NotificationListPage {
     await alert.present();
   }
 
-  Scan(){
+  Scan() {
     this.devices = [];
-    this.ble.scan([],15).subscribe(
+    this.ble.scan([], 15).subscribe(
       device => this.onDeviceDiscovered(device)
     );
   }
-  onDeviceDiscovered(device){
-    console.log('Discovered' + JSON.stringify(device,null,2));
-    this.ngZone.run(()=>{
+  onDeviceDiscovered(device) {
+    console.log('Discovered' + JSON.stringify(device, null, 2));
+    this.ngZone.run(() => {
       this.devices.push(device)
       console.log(device)
     })
@@ -109,24 +109,24 @@ export class NotificationListPage {
       (err) => {
         console.log(err);
       });
-  
+
     this.bluetoothSerial.list().then((success) => {
       this.pairedDevices = success;
     },
       (err) => {
-  
+
       });
-    }
-  
+  }
+
   success = (data) => {
     this.deviceConnected();
   }
   fail = (error) => {
     alert(error);
   }
-  
+
   async selectDevice(id: any) {
-  
+
     const alert = await this.alertController.create({
       header: 'Connect',
       message: 'Do you want to connect with?',
@@ -148,7 +148,7 @@ export class NotificationListPage {
     });
     await alert.present();
   }
-  
+
   deviceConnected() {
     this.bluetoothSerial.isConnected().then(success => {
       alert('Connected Successfullly');
@@ -156,7 +156,7 @@ export class NotificationListPage {
       alert('error' + JSON.stringify(error));
     });
   }
-  
+
   async disconnect() {
     const alert = await this.alertController.create({
       header: 'Disconnect?',

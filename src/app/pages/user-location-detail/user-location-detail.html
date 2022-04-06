@@ -1,0 +1,40 @@
+<ion-content class="user-location-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/user_location"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons *ngIf="user" slot="end">
+        <ion-button (click)="cargarDatos()">
+          <ion-icon slot="icon-only" ios="reload-outline" md="reload-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="user-location-background">
+    <img src="../../../assets/img/idicon.png" [alt]="user.user">
+    <h2>Numero de control: {{user.user}}</h2>
+  </div>
+  <div class="ion-padding user-location-detail" *ngFor="let dato of user.datos">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label color="primary">
+          <h1 class="ion-text-center">
+            <!--
+              <ion-icon ios="calendar-outline" md="calendar-sharp"></ion-icon>
+              <ion-icon ios="speedometer-outline" md="speedometer-sharp"></ion-icon>
+              Date:
+            -->
+            {{dato.updatedAt}}
+          </h1>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="hardware-chip-outline" md="hardware-chip-sharp"></ion-icon>
+        &nbsp;
+        <ion-label>Agent: {{dato.agent}} <br> Build: {{dato.agent_data[0].build}} <br> Location: {{dato.agent_data[0].location}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
